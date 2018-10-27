@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fantasy Trader</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Chart.JS bundled with Moment.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+</head>
+<body>
+    <div id="activeAccts">
+        <h1>Select Trading Account</h1>
+        <select id="selectUser">
+        </select>
+    </div>
+    
+
+
+    <h1>Create a New Account</h1>
+    <input id="newUser" type="text" name="UserName">
+    <button id="userBtn">Submit</button><br>
+
+    <div>
+        <h2>Search the New York Stock Exchange</h2>
+        <button id="nyseBtn">Browse All Companies</button><br>
+        <div class="nyseList">
+            <table id="nyseTable" style="width:100%">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th> 
+                    <th>Report</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <h2>Enter a Specific NYSE Stock</h2>
+        <input type="text" class="singleStock">
+        <button class="singleStockBtn">Submit</button>
+        <div class="nyseList">
+            <table id="nyseQueryTable" style="width:100%">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th> 
+                    <th>Report</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="chartContainer1">
+        <canvas class="myChart"></canvas>
+        <div class="stockInfo">
+            <h3 class="stockName"></h3>
+            <h3 class="market"></h3>
+            <h3 class="latestPrice"></h3>
+            <h3 class="latestTime"></h3>
+            <h3>Shares to Buy: <input type="text" class="sharesToBuy"><button class="buySharesBtn">BUY!</button></h3>
+
+        </div>
+    </div>
+
+    <div>
+        <h2>Search the NASDAQ Exchange</h2>
+        <button id="nasdaqBtn">Browse All Companies</button><br>
+        <div class="nyseList">
+            <table id="nasdaqTable" style="width:100%">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th> 
+                    <th>Report</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <h2>Enter a Specific NASDAQ Stock</h2>
+        <input type="text" class="singleStock2">
+        <button class="singleStockBtn2">Submit</button>
+        <div class="nyseList">
+            <table id="nasdaqQueryTable" style="width:100%">
+                <tr>
+                    <th>Symbol</th>
+                    <th>Company Name</th> 
+                    <th>Report</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="userPortfolio">
+        <h2>Portfolio</h2>
+        <button class="portfolioBtn">Portfolio</button>
+        <h3>Active Investments</h3>
+        <table id="portfolioTable" style="width:100%"></table>
+        
+        <h3>Sold Investments</h3>
+        <table id="soldInvestments" style="width:100%"></table>
+    </div>
+
+    <footer>
+        <h4>Copyright 2018</h4>
+    </footer>
+    
+
+    <script type="text/javascript" src="js/trader.js"></script>
+</body>
+</html>
