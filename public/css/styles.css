@@ -1,12 +1,103 @@
-body {
-    color: firebrick;
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    line-height: 1.8em;
+    color: #666;
+}
+
+.pimg1, .pimg2, .pimg3, .pimg4, .pimg5 {
+    position: relative;
+    opacity: 0.75;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.pimg1 {
+    background-image: url('../img/image1.jpg');
+    min-height: 100%;
+}
+
+.pimg2 {
+    background-image: url('../img/image2.jpg');
+    min-height: 400px;
+}
+.pimg3 {
+    background-image: url('../img/image3.jpeg');
+    min-height: 400px;
+}
+
+.pimg4 {
+    background-image: url('../img/image4.jpg');
+    min-height: 400px;
+}
+
+.pimg5 {
+    background-image: url('../img/image2.jpg');
+    min-height: 100%;
+}
+
+.section {
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.section-light {
+    background-color: #f4f4f4;
+    color: #666;
+}
+
+.section-dark {
+    background-color: #282e34;
+    color: #ddd;
+
+}
+
+.ptext {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #000;
+    font-size: 27px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.ptext .border {
+    background-color: #111;
+    color: white;
+    padding: 20px;
+    opacity: 0.5;
+}
+
+.ptext .border1 {
+    background-color: #111;
+    color: white;
+    font-size: 50px;
+    padding: 20px;
+    opacity: 0.5;
+}
+
+@media(max-width: 568px) {
+    .pimg1, .pimg2, .pimg3, .pimg4 {
+        background-attachment: scroll;
+    }
 }
 
 .nyseList {
-    width: 400px;
-    height: 200px;
+    width: 500px;
+    height: 500px;
     border: 1px, solid, black;
     overflow: scroll;
+}
+
+#nyseTable {
+    margin: 0 auto;
 }
 
 table th {
@@ -23,27 +114,258 @@ table tr:hover {
 }
 
 .chartContainer1 {
-    width: 550px;
-    height: 450px;
-    display: none;
+    width: 600px;
+    height: 550px;
+    display: block;
 }
 
 .myChart {
-    width: 500px;
-    height: 350px;
+    width: 575px;
+    height: 500px;
 }
 
 .sharesToBuy {
     width: 30px;
 }
 
-footer {
-    width: 100%;
-    height: 25px;
-    text-align: center;
-    background-color: blue;
-}
-
 .center {
     text-align: center;
+}
+
+/* Modal Styling */
+
+/****** NYSE Stock List Modal ******/
+.nyseModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.nyseModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.nyseModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/***************************************************************************************/
+/****** NASDAQ Stock List Modal ******/
+.nasdaqModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.nasdaqModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.nasdaqModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/*********************************************************************************************/
+/****** NYSE Search Query Modal ******/
+.nyseQueryModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.nyseQueryModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.nyseQueryModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/*********************************************************************************************/
+/****** NASDAQ Search Query Modal ******/
+.nasdaqQueryModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.nasdaqQueryModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.nasdaqQueryModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/*********************************************************************************************/
+/****** Portfolio Modal ******/
+.portfolioModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.portfolioModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 80%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.portfolioModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/*********************************************************************************************/
+/****** API Call Modal ******/
+.apiCallModal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.apiCallModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 40%;
+    height: 75%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.apiCallModal-Content h2 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.stockInfo h3 {
+    text-align: center;
+}
+/*********************************************************************************************/
+/****** Stock Purchase Verification Modal ******/
+.stockPurchaseModal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.stockPurchaseModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.stockPurchasedModal-Content h1 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+/*********************************************************************************************/
+/****** Stock Selling Verification Modal ******/
+.stockSellingModal {
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.stockSellingModal-Content {
+    background-color: lightcyan;
+    color: black;
+    margin: 5% auto;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.stockSellingModal-Content h1 {
+    font-size: 35px;
+    color: black;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+
+
+.closeBtn {
+    color: firebrick;
+    font-size: 30px;
+    display: inline-block;
+    margin-left: 95%;
+}
+.closeBtn:hover {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }

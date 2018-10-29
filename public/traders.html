@@ -13,103 +13,205 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
 </head>
 <body>
-    <div id="activeAccts">
-        <h1>Select Trading Account</h1>
-        <select id="selectUser">
-        </select>
-    </div>
     
-
-
-    <h1>Create a New Account</h1>
-    <input id="newUser" type="text" name="UserName">
-    <button id="userBtn">Submit</button><br>
-
-    <div>
-        <h2>Search the New York Stock Exchange</h2>
-        <button id="nyseBtn">Browse All Companies</button><br>
-        <div class="nyseList">
-            <table id="nyseTable" style="width:100%">
-                <tr>
-                    <th>Symbol</th>
-                    <th>Company Name</th> 
-                    <th>Report</th>
-                </tr>
-            </table>
+    <div class="pimg1">
+        <div class="ptext">
+            <span class="border1
+            ">Fantasy Trader</span>
         </div>
     </div>
-
-    <div>
-        <h2>Enter a Specific NYSE Stock</h2>
-        <input type="text" class="singleStock">
-        <button class="singleStockBtn">Submit</button>
-        <div class="nyseList">
-            <table id="nyseQueryTable" style="width:100%">
-                <tr>
-                    <th>Symbol</th>
-                    <th>Company Name</th> 
-                    <th>Report</th>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="chartContainer1">
-        <canvas class="myChart"></canvas>
-        <div class="stockInfo">
-            <h3 class="stockName"></h3>
-            <h3 class="market"></h3>
-            <h3 class="latestPrice"></h3>
-            <h3 class="latestTime"></h3>
-            <h3>Shares to Buy: <input type="text" class="sharesToBuy"><button class="buySharesBtn">BUY!</button></h3>
-
-        </div>
-    </div>
-
-    <div>
-        <h2>Search the NASDAQ Exchange</h2>
-        <button id="nasdaqBtn">Browse All Companies</button><br>
-        <div class="nyseList">
-            <table id="nasdaqTable" style="width:100%">
-                <tr>
-                    <th>Symbol</th>
-                    <th>Company Name</th> 
-                    <th>Report</th>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div>
-        <h2>Enter a Specific NASDAQ Stock</h2>
-        <input type="text" class="singleStock2">
-        <button class="singleStockBtn2">Submit</button>
-        <div class="nyseList">
-            <table id="nasdaqQueryTable" style="width:100%">
-                <tr>
-                    <th>Symbol</th>
-                    <th>Company Name</th> 
-                    <th>Report</th>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div id="userPortfolio">
-        <h2>Portfolio</h2>
-        <button class="portfolioBtn">Portfolio</button>
-        <h3>Active Investments</h3>
-        <table id="portfolioTable" style="width:100%"></table>
         
-        <h3>Sold Investments</h3>
-        <table id="soldInvestments" style="width:100%"></table>
+    <!-- This div displays all of the active user accounts that have been created or lets you create a new one -->
+    <section class="section section-light">
+        <h2>Select or Create a New Trading Account</h2>
+        <div id="activeAccts">
+            <h1>Select Trading Account</h1>
+            <select id="selectUser">
+            </select>
+            <h1>Create a New Account</h1>
+            <input id="newUser" type="text" name="UserName">
+            <button id="userBtn">Submit</button><br>
+        </div>
+    </section>
+        
+    <div class="pimg2">
+        <div class="ptext">
+            <span class="border trans">SIMULATED BUYING & SELLING</span>
+        </div>
+    </div>
+        
+    <section class="section section-dark">
+        <h2>NYSE</h2>
+        <p>The New York Stock Exchange (NYSE) is an American stock exchange on Wall Street in New York City. With a market cap of more than US$16 trillion, the NYSE is the world’s largest stock exchange, averaging US$169 billion in daily trading value in 2013. As of 2014, the NYSE (also known as “the Big Board”) has a listing of nearly 1,900 companies, 1,500 of which are U.S. companies. The NYSE is owned by IntercontinentalExchange and is regulated by the Securities and Exchange Commission.
+        </p>
+        <!-- This div lists all of the stocks from the NYSE in a pop up modal -->
+        <div>
+            <button id="nyseBtn">Browse All Companies</button><br>
+            <!-- NYSE List Modal -->
+            <div id="nyseListModal" class="nyseModal">
+                <div class="nyseModal-Content">
+                    <span class="closeBtn">&times;</span>
+                    <h2>New York Stock Exchange</h2>
+                    <div class="nyseList">
+                        <table id="nyseTable" style="width:100%">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company Name</th> 
+                                <th>Report</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- This div displays the NYSE stock or stocks from a search query in a pop up modal -->
+        <div>
+            <h2>Enter a Specific NYSE Stock</h2>
+            <input type="text" class="singleStock">
+            <button class="singleStockBtn">Submit</button>
+            <!-- NYSE Search Query Modal -->
+            <div id="nyseQueryModal" class="nyseQueryModal">
+                <div class="nyseQueryModal-Content">
+                    <span class="closeBtn">&times;</span>
+                    <h2>New York Stock Exchange</h2>
+                    <div class="nyseList">
+                        <table id="nyseQueryTable" style="width:100%">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company Name</th> 
+                                <th>Report</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <div class="pimg3">
+        <div class="ptext">
+            <span class="border trans">THE LATEST QUOTES</span>
+        </div>
+    </div>
+        
+    <section class="section section-dark">
+        <h2>NASDAQ</h2>
+        <p>The Nasdaq Stock Market (also known simply as Nasdaq) is an American stock exchange.  It is the second-largest stock exchange in the world by market capitalization, behind only the New York Stock Exchange located in the same city.  The exchange platform is owned by Nasdaq, Inc., which also owns the Nasdaq Nordic (formerly known as OMX) and Nasdaq Baltic stock market network and several U.S. stock and options exchanges.
+        </p>
+        <!-- This div displays all of the stocks from NASDAQ in a pop up modal -->
+        <div>
+            <button id="nasdaqBtn">Browse All Companies</button><br>
+            <!-- NASDAQ List Modal -->
+            <div id="nasdaqQueryModal" class="nasdaqModal">
+                <div class="nasdaqModal-Content">
+                    <span class="closeBtn">&times;</span>
+                    <h2>NASDAQ</h2>
+                    <div class="nyseList">
+                        <table id="nasdaqTable" style="width:100%">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company Name</th> 
+                                <th>Report</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- This div displays the NASDAQ stock or stocks from a search query in a pop up modal -->
+        <div>
+            <h2>Enter a Specific NASDAQ Stock</h2>
+            <input type="text" class="singleStock2">
+            <button class="singleStockBtn2">Submit</button>
+            <!-- NASDAQ Search Query Modal -->
+            <div id="nasdaqQueryModal" class="nasdaqQueryModal">
+                <div class="nasdaqQueryModal-Content">
+                    <span class="closeBtn">&times;</span>
+                    <h2>NASDAQ</h2>
+                    <div class="nyseList">
+                        <table id="nasdaqQueryTable" style="width:100%">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Company Name</th> 
+                                <th>Report</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <div class="pimg4">
+        <div class="ptext">
+            <span class="border">PORTFOLIO TRACKING</span>
+        </div>
     </div>
 
-    <footer>
-        <h4>Copyright 2018</h4>
-    </footer>
-    
+    <section class="section section-dark">
+        <h2>Your Online Portfolio</h2>
+        <p>Track your investments below.  Track the latest prices as well as sell stock you have already aquired. 
+        </p>
+        <!-- This div displays the users portfolio in a pop up modal -->
+        <div id="userPortfolio">
+            <button class="portfolioBtn">View</button>
+            <!-- Portfolio Modal -->
+            <div id="portfolioModal" class="portfolioModal">
+                <div class="portfolioModal-Content">
+                    <span class="closeBtn">&times;</span>
+                    <h2>Active Investments</h3>
+                    <table id="portfolioTable" style="width:100%"></table>
+            
+                    <h2>Sold Investments</h3>
+                    <table id="soldInvestments" style="width:100%"></table>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    <div class="pimg5">
+        <div class="ptext">
+            <span class="border">Fantasy Trader</span>
+            <p>Copyright&copy; 2018</p>
+        </div>
+    </div>
 
+    <!-- This div displays the chart and stock info from the API call -->
+    <div id="apiCallModal" class="apiCallModal">
+        <div class="apiCallModal-Content">
+            <span class="closeBtn">&times;</span>
+            <div class="chartContainer1">
+                <canvas class="myChart"></canvas>
+                <div class="stockInfo">
+                    <h3 class="stockName"></h3>
+                    <h3 class="market"></h3>
+                    <h3 class="latestPrice"></h3>
+                    <h3 class="latestTime"></h3>
+                    <h3>Shares to Buy: <input type="text" class="sharesToBuy"><button class="buySharesBtn">BUY!</button></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- This div displays a purchase verfication message in a modal -->
+    <div class="stockPurchaseModal">
+        <div class="stockPurchaseModal-Content">
+            <span class="closeBtn">&times;</span>
+            <h1>Transaction Successful</h1>
+            <h2 class="purchasedStockInfo"></h2>
+            <h1>Check Your Portfolio for the Latest Price Movements</h1>
+        </div>
+    </div>
+
+    <!-- This div displays a purchase verfication message in a modal -->
+    <div class="stockSellingModal">
+        <div class="stockSellingModal-Content">
+            <span class="closeBtn">&times;</span>
+            <h1>Transaction Successful</h1>
+            <h2 class="stockSellingInfo"></h2>
+        </div>
+    </div>
     <script type="text/javascript" src="js/trader.js"></script>
 </body>
 </html>

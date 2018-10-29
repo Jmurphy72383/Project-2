@@ -44,7 +44,7 @@ $(document).ready(function() {
 
     //Retrieves all stock data from the NYSE table and renders it to the table
     $("#nyseBtn").on("click", function() {
-        $(this).remove();
+        //$(this).remove();
         $.get("/api/allNyse", function(data) {
             for(var i = 0; i < data.length; i++) {
                 var symbol = data[i].symbol;
@@ -54,13 +54,33 @@ $(document).ready(function() {
                 newTr.append("<td>" + company + "</td>");
                 newTr.append("<td class='center'><button class='getBtn' value='" + symbol + "'>GET</button></td>")
                 $("#nyseTable").append(newTr);
+                $(".nyseModal").css("display", "block");
             }
         })
+    })
+    //Closes the modal
+    $(".closeBtn").on("click", function() {
+        //Closes the modal that is currently displayed
+        $(".nyseModal").css("display", "none");
+        $(".nasdaqModal").css("display", "none");
+        $(".nyseQueryModal").css("display", "none");
+        $(".nasdaqQueryModal").css("display", "none");
+        $(".portfolioModal").css("display", "none");
+        $(".apiCallModal").css("display", "none");
+        $(".stockPurchaseModal").css("display", "none");
+        $(".stockSellingModal").css("display", "none");
+        //Clears modal tables so they dont repeat
+        $("#nyseQueryTable").empty();
+        $("#nasdaqQueryTable").empty();
+        $("#nasdaqTable").empty();
+        $("#nyseTable").empty();
+        $("#portfolioTable").empty();
+        $("#soldInvestments").empty();
     })
 
     //Retrieves all stock data from the NASDAQ table and renders it to the table
     $("#nasdaqBtn").on("click", function() {
-        $(this).remove();
+        //$(this).remove();
         $.get("/api/allNasdaq", function(data) {
             for(var i = 0; i < data.length; i++) {
                 var symbol = data[i].symbol;
@@ -70,14 +90,17 @@ $(document).ready(function() {
                 newTr.append("<td>" + company + "</td>");
                 newTr.append("<td class='center'><button class='getBtn' value='" + symbol + "'>GET</button></td>")
                 $("#nasdaqTable").append(newTr);
+                $(".nasdaqModal").css("display", "block");
             }
         })
     })
 
     //Uses the GET button to make API call to pull live data for the chosen company
     $(document).on("click", ".getBtn", function() {
+        
         myChart.destroy();
-        $(".chartContainer1").css("display", "inline-block");
+        $(".apiCallModal").css("display", "block");
+        //$(".chartContainer1").css("display", "inline-block");
         var querySymbol = $(this).val();
         //Takes the companySymbol variable and includes it in the search to the IEX API to search for charts and news on the company    
         var stockURL = "https://api.iextrading.com/1.0//stock/" + querySymbol + "/batch?types=quote,news,chart&range=1m&last=7";
@@ -95,6 +118,9 @@ $(document).ready(function() {
             //Buys the ammount of shares specified and adds the info to the stocks table in the DB
             $(".buySharesBtn").on("click", function() {
                 console.log("Buying!");
+                var num = $(".sharesToBuy").val();
+                $(".purchasedStockInfo").html("<h3>" + num + " shares of " + response.quote.companyName + " purchased!</h3>");
+                $(".stockPurchaseModal").css("display", "block");
                 var todayDate = new Date().toISOString().slice(0,10);
                 $.post("/api/stocks", {
                     symbol: response.quote.symbol,
@@ -191,6 +217,8 @@ $(document).ready(function() {
                 newTr.append("<td>" + company + "</td>");
                 newTr.append("<td class='center'><button class='getBtn' value='" + symbol + "'>GET</button></td>")
                 $("#nyseQueryTable").append(newTr);
+                $(".nyseQueryModal").css("display", "block");
+
             }
         })
     })
@@ -209,13 +237,15 @@ $(document).ready(function() {
                 newTr.append("<td>" + company + "</td>");
                 newTr.append("<td class='center'><button class='getBtn' value='" + symbol + "'>GET</button></td>")
                 $("#nasdaqQueryTable").append(newTr);
+                $(".nasdaqQueryModal").css("display", "block");
             }
         })
     })
     //Renders Users portfolio chart to the page with data from the Stocks table
     $(".portfolioBtn").on("click", function() {
-        $(this).remove();
+        //$(this).remove();
         updatePortfolioTable();
+        $(".portfolioModal").css("display", "block");
     })
 
     //Update stock price on your portfolio table
@@ -332,6 +362,7 @@ $(document).ready(function() {
             sellNetTotal = sellCurrentPrice - sellBuyPrice;
             sellNetTotal = sellNetTotal * sellShares;
             sellNetTotal= sellNetTotal.toFixed(2);
+            
             //Post data of stock sold to sold table in DB
             $.post("/api/sold", {
                 symbol: sellSymbol,
@@ -354,7 +385,8 @@ $(document).ready(function() {
                 console.log("Sold stock at id: " + soldStock)
         
             );
-            location.reload();
+            $(".stockSellingModal").css("display", "block");
+            $(".stockSellingInfo").html("<h2>" + sellShares + " shares of " + sellCompanyName + " sold!</h2>");
             
         })
     })
