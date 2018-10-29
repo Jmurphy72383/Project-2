@@ -84,7 +84,6 @@ $(document).ready(function() {
 
     //Retrieves all stock data from the NASDAQ table and renders it to the table
     $("#nasdaqBtn").on("click", function() {
-        //$(this).remove();
         $.get("/api/allNasdaq", function(data) {
             for(var i = 0; i < data.length; i++) {
                 var symbol = data[i].symbol;
@@ -275,7 +274,9 @@ $(document).ready(function() {
                 data: currentPrice
             })
         })
-        $("#portfolioTable").empty().append(updatePortfolioTable);
+        //Empties both tables and updates them with current data from the API call
+        $("#portfolioTable").empty();
+        $("#soldInvestments").empty().append(updatePortfolioTable);
     })
 
     function updatePortfolioTable() {
