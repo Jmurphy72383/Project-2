@@ -76,6 +76,10 @@ $(document).ready(function() {
         $("#nyseTable").empty();
         $("#portfolioTable").empty();
         $("#soldInvestments").empty();
+        //Shows the buy shares button on screen *Had to remove because double clicking caused bugs in DB*
+        $(".buySharesBtn").css("display", "inline");
+        //Chart values still persisting in backgound even if new chart is rendered.  Trying to fix that bug with this.
+        myChart.destroy();
     })
 
     //Retrieves all stock data from the NASDAQ table and renders it to the table
@@ -117,6 +121,8 @@ $(document).ready(function() {
             $(".latestTime").text("As of: " + response.quote.latestTime);
             //Buys the ammount of shares specified and adds the info to the stocks table in the DB
             $(".buySharesBtn").on("click", function() {
+                //Removing it because an accidental double click caused 2 transactions
+                $(".buySharesBtn").css("display", "none");
                 console.log("Buying!");
                 var num = $(".sharesToBuy").val();
                 $(".purchasedStockInfo").html("<h3>" + num + " shares of " + response.quote.companyName + " purchased!</h3>");
